@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Hoja de Vida</title>
+    <link rel="stylesheet" href="{% static 'estilos.css' %}">
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <img src="{% static 'foto.jpg' %}" alt="Foto de perfil" class="foto-perfil">
+        <h1>Yeraldin Araujo Urbano</h1>
+        <p class="subtitulo">
+            sara.araujo@campusucc.edu.co
+            <span>|</span>
+            3127447452
+            <span>|</span>
+            Pasto, Colombia
+        </p>
+    </header>
+
+    <div class="content">
+
+        <div class="section">
+            <h2>Perfil Profesional</h2>
+            <p>
+                Estudiante de artes (academia de artes) y estudiante de Ingeniería de Software
+                en quinto semestre.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Datos Personales</h2>
+            <p class="info"><strong>Nombre:</strong> Yeraldin Araujo Urbano</p>
+            <p class="info"><strong>Documento:</strong> 1081054025</p>
+            <p class="info"><strong>Fecha de nacimiento:</strong> 13/09/2005</p>
+            <p class="info"><strong>Dirección:</strong> Mijitayo, Pasto</p>
+        </div>
+
+        <div class="section">
+            <h2>Formación Académica</h2>
+            <ul>
+                <li>
+                    <strong>Universidad Cooperativa de Colombia – Campus Pasto</strong>
+                    <span class="badge">En curso</span><br>
+                    Ingeniería de Software · 2024 - 2026
+                </li>
+                <li>
+                    <strong>Colegio Filipense "Nuestra Señora de la Esperanza"</strong><br>
+                    Bachiller Académico · 2011 - 2021
+                </li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Repositorio GitHub</h2>
+            <p>
+                🔗
+                <a href="https://github.com/Yeraldin3139" target="_blank">
+                    github.com/Yeraldin3139
+                </a>
+            </p>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
