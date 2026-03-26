@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fernando Rosero - Software Engineer & Contador Público</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #10b981;
+            --bg-dark: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-name {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .hero-title {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+        }
+
+        .contact-item i {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--primary-color);
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .skill-category {
+            background: var(--bg-secondary);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .skill-category h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 5px;
+            margin: 5px;
+            font-size: 0.85rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            border-left: 2px solid var(--primary-color);
+        }
+
+        .timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -41px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 4px solid var(--bg-dark);
+        }
+
+        .timeline-item h4 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item .company {
+            color: var(--text-main);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item .date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .timeline-item li {
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .timeline-item li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: var(--bg-secondary);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            padding: 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+            border-color: var(--primary-color);
+        }
+
+        .project-card h4 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .project-tech {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+
+        .project-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .education-card {
+            background: var(--bg-secondary);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .education-card h4 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .education-card .institution {
+            color: var(--text-main);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .education-card .period {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-name { font-size: 2.5rem; }
+            .hero-title { font-size: 1.3rem; }
+            .nav-links { display: none; }
+            .contact-info { flex-direction: column; gap: 10px; }
+            .education-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="text-xl font-bold text-blue-500">FR</div>
+            <div class="nav-links">
+                <a href="#hero">Inicio</a>
+                <a href="#about">Perfil</a>
+                <a href="#experience">Experiencia</a>
+                <a href="#education">Educación</a>
+                <a href="#projects">Proyectos</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div>
+            <div class="hero-name">Fernando Rosero</div>
+            <div class="hero-title">Software Engineer & Contador Público</div>
+            <div class="hero-subtitle">El puente entre código y finanzas</div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>fernando@rosero.dev</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+57 300 123 4567</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Pasto, Colombia</span>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="https://linkedin.com/in/fernandorosero" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/fernandorosero" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PERFIL PROFESIONAL -->
+    <section id="about">
+        <h2 class="section-title">Perfil Profesional</h2>
+        <p class="text-lg text-gray-300 mb-8">
+            Estudiante de Ingeniería de Software y Contador Público con pasión por crear soluciones tecnológicas 
+            que optimizan procesos financieros. Combino análisis contable con desarrollo full-stack para construir 
+            sistemas robustos y escalables.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-10 mt-10">
+            <div>
+                <h3 class="text-2xl font-bold mb-6 text-blue-500">Habilidades Técnicas</h3>
+                <div class="space-y-3">
+                    <div class="skill-tag">Next.js & React</div>
+                    <div class="skill-tag">TypeScript</div>
+                    <div class="skill-tag">Node.js & APIs</div>
+                    <div class="skill-tag">PostgreSQL & MongoDB</div>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-2xl font-bold mb-6 text-green-500">Habilidades Financieras</h3>
+                <div class="space-y-3">
+                    <div class="skill-tag">Contabilidad Financiera</div>
+                    <div class="skill-tag">Tributación</div>
+                    <div class="skill-tag">Auditoría</div>
+                    <div class="skill-tag">Análisis Financiero</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-10 mt-10">
+            <div>
+                <h3 class="text-2xl font-bold mb-6 text-blue-500">Idiomas</h3>
+                <div class="space-y-2">
+                    <p><span class="text-blue-500 font-bold">Español:</span> Nativo</p>
+                    <p><span class="text-blue-500 font-bold">Inglés:</span> Intermedio</p>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-2xl font-bold mb-6 text-blue-500">Certificaciones</h3>
+                <ul class="space-y-2 text-gray-300">
+                    <li>• Next.js Professional Certification</li>
+                    <li>• AWS Cloud Practitioner</li>
+                    <li>• Normas Internacionales de Contabilidad</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCIA -->
+    <section id="experience">
+        <h2 class="section-title">Experiencia Laboral</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>Desarrollador Full-Stack Freelance</h4>
+                <div class="company">Independiente</div>
+                <div class="date">2021 - Presente</div>
+                <ul>
+                    <li>Desarrollo de aplicaciones web y sistemas de gestión para pequeñas y medianas empresas</li>
+                    <li>Especialización en soluciones financieras y contables automatizadas</li>
+                    <li>Implementación de arquitecturas escalables con Next.js, TypeScript y PostgreSQL</li>
+                    <li>Integración de APIs de terceros para facturación electrónica y pagos</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <h4>Asistente Contable</h4>
+                <div class="company">Estudio Contable Rosero & Asociados</div>
+                <div class="date">2019 - 2021</div>
+                <ul>
+                    <li>Gestión de registros contables y preparación de estados financieros</li>
+                    <li>Elaboración de declaraciones tributarias para personas naturales y jurídicas</li>
+                    <li>Implementación de procesos digitales para optimización de tareas</li>
+                    <li>Asesoría contable y tributaria a clientes del estudio</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCACIÓN -->
+    <section id="education">
+        <h2 class="section-title">Educación</h2>
+        <div class="education-grid">
+            <div class="education-card">
+                <h4>Ingeniería de Software</h4>
+                <div class="institution">Universidad de Nariño</div>
+                <div class="period">2020 - Presente</div>
+                <p class="text-gray-300">
+                    Formación en desarrollo de software, arquitectura de sistemas, bases de datos y metodologías ágiles. 
+                    Enfoque en tecnologías web modernas y soluciones escalables.
+                </p>
+            </div>
+
+            <div class="education-card">
+                <h4>Contador Público</h4>
+                <div class="institution">Universidad de Nariño</div>
+                <div class="period">2018 - 2023</div>
+                <p class="text-gray-300">
+                    Título profesional en Contaduría Pública con énfasis en auditoría, tributación y análisis financiero. 
+                    Experiencia en normatividad contable colombiana e internacional.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section id="projects">
+        <h2 class="section-title">Proyectos Destacados</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h4>Portafolio Personal Profesional</h4>
+                <div class="project-tech">Next.js 14 · TypeScript · Tailwind CSS · Framer Motion</div>
+                <p class="text-gray-300 mb-4">
+                    Portafolio web moderno con modo claro/oscuro, animaciones fluidas, formulario de contacto funcional 
+                    y diseño completamente responsive. Incluye sistema de temas, Server Actions y arquitectura escalable.
+                </p>
+                <a href="#" class="project-link">
+                    Ver código en GitHub <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+
+            <div class="project-card">
+                <h4>Sistema de Gestión Contable SaaS</h4>
+                <div class="project-tech">Next.js · TypeScript · PostgreSQL · Stripe</div>
+                <p class="text-gray-300 mb-4">
+                    Plataforma web para gestión contable de pequeñas empresas con facturación electrónica, 
+                    reportes financieros automatizados y dashboard analítico en tiempo real.
+                </p>
+            </div>
+
+            <div class="project-card">
+                <h4>Automatización de Declaraciones Tributarias</h4>
+                <div class="project-tech">Python · Pandas · API DIAN</div>
+                <p class="text-gray-300 mb-4">
+                    Herramienta de automatización para generación de declaraciones tributarias con integración directa 
+                    a la DIAN, reduciendo tiempo de procesamiento en 80%.
+                </p>
+            </div>
+
+            <div class="project-card">
+                <h4>Dashboard Financiero Empresarial</h4>
+                <div class="project-tech">React · Node.js · MongoDB · Chart.js</div>
+                <p class="text-gray-300 mb-4">
+                    Dashboard interactivo para visualización de KPIs financieros con análisis predictivo y 
+                    generación de reportes personalizados.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center border-t border-gray-800 text-gray-500">
+        <p>&copy; 2026 Fernando Rosero. Referencias disponibles a solicitud.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
